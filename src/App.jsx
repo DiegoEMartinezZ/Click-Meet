@@ -1,3 +1,4 @@
+import TestConnectionDB from './components/TestConnectionDB';
 const App = () => {
   return (
     <>
@@ -5,6 +6,7 @@ const App = () => {
         <div className="p-8 bg-white text-center rounded-lg shadow-lg">
           <h1 className="text-2xl font-bold text-gray-900">Landing</h1>
           <h3 className="text-sm"> Click & Meet</h3>
+          <TestConnectionDB />
         </div>
       </div>
     </>
