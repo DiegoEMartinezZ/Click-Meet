@@ -1,15 +1,19 @@
-import TestConnectionDB from './components/TestConnectionDB';
+import { BrowserRouter, Route, Routes } from 'react-router';
+import routes from './routes.jsx';
+
 const App = () => {
   return (
-    <>
-      <div className="grid h-screen place-items-center bg-gray-900">
-        <div className="p-8 bg-white text-center rounded-lg shadow-lg">
-          <h1 className="text-2xl font-bold text-gray-900">Landing</h1>
-          <h3 className="text-sm"> Click & Meet</h3>
-          <TestConnectionDB />
-        </div>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        {routes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={route.element}
+          />
+        ))}
+      </Routes>
+    </BrowserRouter>
   );
 };
 
