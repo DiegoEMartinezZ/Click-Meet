@@ -8,9 +8,21 @@ const MenuAdmin = ({ title }) => {
         <div className="bg-white p-6 shadow-lg rounded-lg">
           <h1 className="text-center font-bold">{title}</h1>
           <ul>
-            <MenuButton icon={FaCalendarCheck} text={"Upcoming Meetings"} />
-            <MenuButton icon={FaUserCircle} text={"User Metrics"} />
-            <MenuButton icon={FaUserTie} text={"Professional Overview"} />
+            <MenuButton
+              icon={FaCalendarCheck}
+              text={"Upcoming Meetings"}
+              url={"/admin/upcoming-meetings"}
+            />
+            <MenuButton
+              icon={FaUserCircle}
+              text={"Client Metrics"}
+              url={"/admin/client-metrics"}
+            />
+            <MenuButton
+              icon={FaUserTie}
+              text={"Professional Overview"}
+              url={"/admin/professional-overview"}
+            />
           </ul>
         </div>
       </section>
