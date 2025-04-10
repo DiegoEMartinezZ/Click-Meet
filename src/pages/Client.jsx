@@ -1,4 +1,4 @@
-import Menu from "../components/menu/MenuAdmin";
+import MenuClient from "../components/menu/MenuClient";
 import Navbar from "../UI/navbar/Navbar";
 import Title from "../UI/txt/Title";
 
@@ -7,7 +7,7 @@ const Client = () => {
     <>
       <Navbar />
       <Title />
-      <Menu title={"Welcome, Client :)"} />
+      <MenuClient title={"Welcome, Client :)"} />
     </>
   );
 };
