@@ -5,9 +5,12 @@ import ClientMetrics from "./pages/adminViews/ClientMetrics.jsx";
 import Client from "./pages/Client.jsx";
 import Landing from "./pages/Landing.jsx";
 import SelectUser from "./pages/SelectUser.jsx";
+import LoginPage from "./pages/Login.jsx";
 
 const routes = [
   { path: "/", element: <Landing /> },
+  // Login
+  { path: "/login", element: <LoginPage /> }, // TODO: Implement authentication.
   { path: "/select-user", element: <SelectUser /> },
   // Admin Role
   { path: "/admin", element: <Admin /> },
