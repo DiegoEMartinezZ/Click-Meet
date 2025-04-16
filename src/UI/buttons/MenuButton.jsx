@@ -13,7 +13,7 @@ const MenuButton = ({ icon: Icon, text, url }) => {
         className="bg-clickmeet-orange flex items-center justify-center py-3 w-60 rounded-xl m-auto my-4 cursor-pointer"
         onClick={handlerToPage}
       >
-        <Icon className="mx-2" />
+        {Icon && <Icon className="mx-2" />}
         <h1>{text}</h1>
       </li>
     </>
