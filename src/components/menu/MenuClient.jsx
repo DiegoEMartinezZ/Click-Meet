@@ -9,7 +9,7 @@ const MenuClient = ({ title }) => {
         <div className="bg-white p-6 shadow-lg rounded-lg">
           <h1 className="text-center font-bold">{title}</h1>
           <ul>
-            <MenuButton icon={FaCalendarCheck} text={"Schedule Appointment"} />
+            <MenuButton icon={FaCalendarCheck} text={"Schedule Appointment"} url={"/client/appointment"} />
             <MenuButton icon={IoCalendarSharp} text={"My Appointments"} />
             <MenuButton icon={FaCalendar} text={"Calendar"} />
           </ul>
