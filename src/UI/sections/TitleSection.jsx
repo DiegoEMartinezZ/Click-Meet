@@ -11,10 +11,9 @@ const TitleSection = ({ icon: Icon, text }) => {
   };
 
   return (
-    <div className="bg-clickmeet-orange flex items-center justify-center py-2 w-fit px-5 rounded-xl m-auto my-4">
+    <div className="bg-clickmeet-orange flex items-center justify-center py-2 w-fit px-5 rounded-xl m-auto my-4 cursor-pointer" onClick={goBack}>
       <MdArrowLeft
-        className="text-2xl cursor-pointer"
-        onClick={goBack}
+        className="text-2xl"
       />
       {Icon && <Icon className="mx-2" />}
       <h1>{text}</h1>
