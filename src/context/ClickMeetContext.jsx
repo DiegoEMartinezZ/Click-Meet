@@ -1,20 +1,116 @@
-import { createContext, useContext } from "react";
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
+
 const ClickMeetContext = createContext();
 
 export const ClickMeetProvider = ({ children }) => {
-  //
-  // Handle Submit
-  //
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // Form Data State
+  const [formData, setFormData] = useState({
+    firstName: "",
+    email: "",
+    service: "",
+    professionalName: "",
+    appointmentTime: "",
+    registrationDate: "",
+  });
+
+  // UI States
+  const [isClicked, setIsClicked] = useState(false);
+  const [editBtn, setEditBtn] = useState(false);
+  const [filterBtn, setFilterBtn] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState("");
+  const [selectedDay, setSelectedDay] = useState("");
+  const [status, setStatus] = useState("");
+
+  // Submitted Data State Filtered
+  const [submittedData, setSubmittedData] = useState(null);
+
+  // Handlers
+  const handleSubmit = () => {
+    setSubmittedData({
+      ...formData,
+      month: selectedMonth,
+      day: selectedDay,
+      status: status,
+    });
+    setIsClicked(true);
   };
 
-  //
-  // Select Month
-  //
-  const [selectedMonth, setSelectedMonth] = useState("");
+  const handleFilterBtn = () => {
+    setFilterBtn(!filterBtn);
+    resetFilters();
+  };
 
+  const deleteFilterSelection = (filterKey) => {
+    if (!submittedData) return;
+    // Create a new object excluding the deleted filter
+    const updatedData = { ...submittedData };
+    delete updatedData[filterKey];
+    // Update submittedData with the new filtered data
+    setSubmittedData(updatedData);
+
+    if (filterKey === "month") {
+      setSelectedMonth("");
+    } else if (filterKey === "status") {
+      setStatus("");
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [filterKey]: "",
+      }));
+    }
+
+    if (Object.keys(updatedData).length === 0) {
+      resetFilters();
+    }
+  };
+
+  const handleMonthChange = (e) => {
+    setSelectedMonth(e.target.value);
+  };
+
+  const handleDayChange = (e) => {
+    setSelectedDay(e.target.value);
+  };
+
+  const handleStatusChange = (e) => {
+    setStatus(e.target.value);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleEditBtn = () => {
+    console.log("Quieres editar un dato");
+    setEditBtn(!editBtn);
+  };
+
+  const handleDeleteBtn = () => {
+    console.log("Quieres eliminar un dato");
+  };
+
+  // Reset Function
+  const resetFilters = () => {
+    setFormData({
+      firstName: "",
+      email: "",
+      service: "",
+      professionalName: "",
+      appointmentTime: "",
+      registrationDate: "",
+    });
+    setStatus("");
+    setSelectedMonth("");
+    setSelectedDay("");
+    setSubmittedData(null);
+    setIsClicked(false);
+  };
+
+  // Constants
   const months = [
     { value: "1", label: "January" },
     { value: "2", label: "February" },
@@ -30,53 +126,45 @@ export const ClickMeetProvider = ({ children }) => {
     { value: "12", label: "December" },
   ];
 
-  const handleMonthChange = (e) => {
-    setSelectedMonth(e.target.value);
-  };
-
-  //
-  // Select Month
-  //
-  const [status, setStatus] = useState("");
+  const days = [
+    { value: "1", label: "Sunday" },
+    { value: "2", label: "Monday" },
+    { value: "3", label: "Tuesday" },
+    { value: "4", label: "Wednesday" },
+    { value: "5", label: "Thursday" },
+    { value: "6", label: "Friday" },
+    { value: "7", label: "Saturday" },
+  ];
 
   const isAvailable = [
     { value: "1", label: "Active" },
     { value: "2", label: "Inactive" },
   ];
 
-  const handleStatusChange = (e) => {
-    setStatus(e.target.value);
-  };
-
-  //
-  // Reset Status and Month option Values
-  //
-  const resetFilters = () => {
-    setStatus("");
-    setSelectedMonth("");
-  };
-
-  //
-  // Filter Btn (Active or inactive)
-  //
-  const [filterBtn, setFilterBtn] = useState(false);
-  const handleFilterBtn = () => {
-    setFilterBtn(!filterBtn);
-    resetFilters();
-  };
   return (
     <ClickMeetContext.Provider
       value={{
+        deleteFilterSelection,
+        editBtn,
+        handleEditBtn,
+        handleDeleteBtn,
+        isClicked,
         handleSubmit,
         handleFilterBtn,
         filterBtn,
         selectedMonth,
+        selectedDay,
         months,
+        days,
         handleMonthChange,
+        handleDayChange,
         status,
         isAvailable,
         handleStatusChange,
         resetFilters,
+        formData,
+        handleInputChange,
+        submittedData,
       }}
     >
       {children}
@@ -91,3 +179,5 @@ export const useClickMeet = () => {
   }
   return context;
 };
+
+export default ClickMeetContext;
