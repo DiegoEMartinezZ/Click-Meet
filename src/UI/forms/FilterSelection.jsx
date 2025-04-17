@@ -35,7 +35,7 @@ const FilterSelection = ({}) => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-4 p-4">
+    <div className="grid grid-cols-3 gap-4 p-3">
       {getFilterData().map((oneItem) => (
         <FilterSelected
           key={oneItem.key}
