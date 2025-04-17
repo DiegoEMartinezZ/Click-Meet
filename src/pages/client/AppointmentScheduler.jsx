@@ -79,12 +79,14 @@ const AppointmentScheduler = () => {
         {currentStep === 2 && (
           <TimeSelector
             onTimeSelect={handleTimeSelect}
+            isEnabled={!!selectedDate}
           />
         )}
 
         {currentStep === 3 && (
           <ServiceSelector
             onServiceSelect={handleServiceSelect}
+            isEnabled={!!selectedDate && !!selectedTime}
           />
         )}
 
@@ -102,7 +104,7 @@ const AppointmentScheduler = () => {
       {/* Desktop View */}
       <div className="hidden md:block container mx-auto p-4">
         <div className="grid grid-cols-3 gap-4">
-          <div className={`transition-opacity duration-300 h-full flex flex-col ${!selectedDate && currentStep !== 1 ? 'opacity-50' : 'opacity-100'}`}>
+          <div className={`transition-opacity duration-300 h-full flex flex-col`}>
             <div className="bg-white rounded-lg shadow-md p-4 flex-1 flex flex-col">
               <DateSelector
                 onDateSelect={handleDateSelect}
@@ -111,7 +113,7 @@ const AppointmentScheduler = () => {
             </div>
           </div>
 
-          <div className={`transition-opacity duration-300 h-full flex flex-col ${!selectedTime && currentStep !== 2 ? 'opacity-50' : 'opacity-100'}`}>
+          <div className={`transition-opacity duration-300 h-full flex flex-col ${!selectedDate ? 'opacity-50' : 'opacity-100'}`}>
             <div className="bg-white rounded-lg shadow-md p-4 flex-1 flex flex-col">
               <TimeSelector
                 onTimeSelect={handleTimeSelect}
@@ -121,7 +123,7 @@ const AppointmentScheduler = () => {
             </div>
           </div>
 
-          <div className={`transition-opacity duration-300 h-full flex flex-col ${!selectedService && currentStep !== 3 ? 'opacity-50' : 'opacity-100'}`}>
+          <div className={`transition-opacity duration-300 h-full flex flex-col ${!selectedDate || !selectedTime ? 'opacity-50' : 'opacity-100'}`}>
             <div className="bg-white rounded-lg shadow-md p-4 flex-1 flex flex-col">
               <ServiceSelector
                 onServiceSelect={handleServiceSelect}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TimeSelector = ({ onTimeSelect }) => {
+const TimeSelector = ({ onTimeSelect, isEnabled }) => {
   const [selectedTime, setSelectedTime] = useState(null);
 
   // TODO: Set according disponibility
@@ -11,6 +11,7 @@ const TimeSelector = ({ onTimeSelect }) => {
   ];
 
   const handleTimeSelect = (time) => {
+    if (!isEnabled) return;
     setSelectedTime(time);
     if (onTimeSelect) {
       onTimeSelect(time);
@@ -27,7 +28,7 @@ const TimeSelector = ({ onTimeSelect }) => {
         {timeSlots.map((time, index) => (
           <button
             key={index}
-            className={`p-4 border-2 border-gray-400 rounded hover:border-white focus:outline-none
+            className={`p-4 border-2 border-gray-400 rounded ${!isEnabled ? 'cursor-not-allowed' : 'hover:border-white'}  focus:outline-none 
                       ${selectedTime === time ? 'border-white' : ''}`}
             onClick={() => handleTimeSelect(time)}
           >

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ServiceSelector = ({ onServiceSelect }) => {
+const ServiceSelector = ({ onServiceSelect, isEnabled }) => {
   const [services, setServices] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -28,6 +28,7 @@ const ServiceSelector = ({ onServiceSelect }) => {
   }, []);
 
   const handleServiceSelect = (service) => {
+    if (!isEnabled) return;
     setSelectedService(service);
     if (onServiceSelect) {
       onServiceSelect(service);
@@ -35,7 +36,7 @@ const ServiceSelector = ({ onServiceSelect }) => {
   };
 
   return (
-    <div className="w-full md:size-full max-w-md mx-auto rounded-2xl bg-clickmeet-black text-white p-6">
+    <div className={`w-full md:size-full max-w-md mx-auto rounded-2xl bg-clickmeet-black text-white p-6`}>
       <h2 className="text-3xl font-bold text-center mb-2">Service</h2>
       <p className="text-center mb-6">Select a service for the appointment</p>
 
@@ -46,11 +47,11 @@ const ServiceSelector = ({ onServiceSelect }) => {
           {services.map((service) => (
             <button
               key={service.id}
-              className={`p-4 border-2 border-gray-400 rounded hover:border-white focus:outline-none
-                        ${selectedService?.id === service.id ? 'border-white' : ''}`}
+              className={`p-4 border-2 border-gray-400 rounded ${!isEnabled ? 'cursor-not-allowed' : 'hover:border-white'}  focus:outline-none 
+              ${selectedService?.id === service.id ? 'border-white' : ''}`}
               onClick={() => handleServiceSelect(service)}
             >
-              <div className="font-medium">{service.name}</div>
+              <div className="font-medium text-center text-sm">{service.name}</div>
               <div className="text-sm text-gray-300">{service.duration} min</div>
             </button>
           ))}
