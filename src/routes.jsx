@@ -5,9 +5,14 @@ import ClientMetrics from "./pages/adminViews/ClientMetrics.jsx";
 import Client from "./pages/Client.jsx";
 import Landing from "./pages/Landing.jsx";
 import SelectUser from "./pages/SelectUser.jsx";
+import LoginPage from "./pages/Login.jsx";
+import AppointmentScheduler from "./pages/client/AppointmentScheduler.jsx";
+import AppointmentConfirmationPage from "./pages/client/AppointmentConfirmation.jsx";
 
 const routes = [
   { path: "/", element: <Landing /> },
+  // Login
+  { path: "/login", element: <LoginPage /> }, // TODO: Implement authentication.
   { path: "/select-user", element: <SelectUser /> },
   // Admin Role
   { path: "/admin", element: <Admin /> },
@@ -18,6 +23,8 @@ const routes = [
   // Client Role
   { path: "/client", element: <Client /> },
   // Client Role Views
+  { path: "/client/appointment", element: <AppointmentScheduler /> },
+  { path: "/client/appointment-confirmation", element: <AppointmentConfirmationPage /> }
 ];
 
 export default routes;

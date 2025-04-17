@@ -5,9 +5,9 @@ const MenuAdmin = ({ title }) => {
   return (
     <>
       <section className="absolute top-0 bottom-0 right-0 left-0 h-screen grid place-items-center">
-        <div className="bg-white p-6 shadow-lg rounded-lg">
-          <h1 className="text-center font-bold">{title}</h1>
-          <ul>
+        <div className="bg-white p-8 shadow-xl rounded-xl md:w-96">
+          <h1 className="text-center font-bold md:text-2xl mb-6">{title}</h1>
+          <ul className="space-y-6">
             <MenuButton
               icon={FaCalendarCheck}
               text={"Upcoming Meetings"}

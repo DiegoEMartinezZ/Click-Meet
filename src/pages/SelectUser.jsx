@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const SelectUser = () => {
   const navigate = useNavigate();
   const handleUserSelect = () => {
-    console.log("Click");
+    navigate("/client");
   };
 
   const handleAdminView = () => {
@@ -13,7 +13,7 @@ const SelectUser = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-clickmeet-black text-white">
+    <div className="flex justify-center items-center h-screen bg-clickmeet-black text-clickmeet-white">
       <div className="flex flex-col items-center text-center">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-1">
