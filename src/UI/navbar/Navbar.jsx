@@ -1,12 +1,18 @@
 import { BiSolidBellRing } from "react-icons/bi";
-import { FaBars } from "react-icons/fa";
+import { CiHome } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const goHome = () => {
+    navigate("/select-user");
+  };
+
   return (
     <>
       <nav className="bg-clickmeet-black w-screen py-3 text-clickmeet-white md:py-5">
         <section className="flex justify-between px-8">
-          <FaBars />
+          <CiHome onClick={goHome} className="cursor-pointer" />
           <BiSolidBellRing />
         </section>
       </nav>
