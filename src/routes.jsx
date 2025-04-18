@@ -12,8 +12,8 @@ import AppointmentConfirmationPage from "./pages/client/AppointmentConfirmation.
 const routes = [
   { path: "/", element: <Landing /> },
   // Login
-  { path: "/login", element: <LoginPage /> }, // TODO: Implement authentication.
   { path: "/select-user", element: <SelectUser /> },
+  { path: "/login", element: <LoginPage /> }, // TODO: Implement authentication.
   // Admin Role
   { path: "/admin", element: <Admin /> },
   // Admin Role Views
@@ -24,7 +24,10 @@ const routes = [
   { path: "/client", element: <Client /> },
   // Client Role Views
   { path: "/client/appointment", element: <AppointmentScheduler /> },
-  { path: "/client/appointment-confirmation", element: <AppointmentConfirmationPage /> }
+  {
+    path: "/client/appointment-confirmation",
+    element: <AppointmentConfirmationPage />,
+  },
 ];
 
 export default routes;

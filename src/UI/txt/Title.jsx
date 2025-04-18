@@ -1,18 +1,7 @@
-import { useNavigate } from "react-router-dom";
-
 const Title = () => {
-  const navigate = useNavigate();
-
-  const handleNavigateHome = () => {
-    navigate("/");
-  };
-
   return (
     <>
-      <div
-        className="my-8 text-center relative cursor-pointer z-10"
-        onClick={handleNavigateHome}
-      >
+      <div className="my-8 text-center ">
         <h1 className="text-4xl font-bold mb-1">
           Click <span className="text-clickmeet-orange">&</span> Meet
         </h1>
