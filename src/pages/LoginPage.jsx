@@ -1,8 +1,9 @@
 import { useState } from "react";
 import LoginForm from "../UI/forms/login/LoginForm";
 import SignUpForm from "../UI/forms/login/SignUpForm";
-import Navbar from "../UI/navbar/Navbar";
 import Title from "../UI/txt/Title";
+import ClientNavBar from "../UI/navbar/ClientNavBar";
+import RolSession from "../UI/txt/RolSession";
 
 const LoginPage = () => {
   const [showLoginForm, setShowLoginForm] = useState(true);
@@ -13,7 +14,8 @@ const LoginPage = () => {
 
   return (
     <>
-      <Navbar />
+      <ClientNavBar />
+      <RolSession rol={"Client"} />
       <Title />
       {showLoginForm ? (
         <LoginForm onSwitchForm={toggleForm} />

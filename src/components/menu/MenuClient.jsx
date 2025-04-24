@@ -7,7 +7,8 @@ const MenuClient = ({ title }) => {
     <>
       <section className="grid place-items-center">
         <div className="bg-white p-8 shadow-xl rounded-xl md:w-96 ">
-          <h1 className="text-center font-bold md:text-2xl mb-6">{title}</h1>
+          <h1 className="text-center font-light md:text-xl mb-6">{title}</h1>
+
           <ul className="space-y-6">
             <MenuButton
               icon={FaCalendarCheck}
@@ -18,11 +19,6 @@ const MenuClient = ({ title }) => {
               icon={IoCalendarSharp}
               text={"My Appointments"}
               url={"/client/my-appointments"}
-            />
-            <MenuButton
-              icon={FaCalendar}
-              text={"Calendar"}
-              url={"/client/calendar"}
             />
           </ul>
         </div>

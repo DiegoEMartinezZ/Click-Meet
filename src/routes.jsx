@@ -5,13 +5,13 @@ import ClientMetrics from "./pages/adminViews/ClientMetrics.jsx";
 import Client from "./pages/Client.jsx";
 import Landing from "./pages/Landing.jsx";
 import SelectUser from "./pages/SelectUser.jsx";
-import LoginPage from "./pages/Login.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 import AppointmentScheduler from "./pages/client/AppointmentScheduler.jsx";
 import AppointmentConfirmationPage from "./pages/client/AppointmentConfirmation.jsx";
 
 const routes = [
   { path: "/", element: <Landing /> },
-  // Login
+  // Client Login
   { path: "/select-user", element: <SelectUser /> },
   { path: "/login", element: <LoginPage /> }, // TODO: Implement authentication.
   // Admin Role

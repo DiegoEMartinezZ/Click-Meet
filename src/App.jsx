@@ -4,15 +4,15 @@ import { ClickMeetProvider } from "./context/ClickMeetContext";
 
 const App = () => {
   return (
-    <ClickMeetProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <ClickMeetProvider>
         <Routes>
           {routes.map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />
           ))}
         </Routes>
-      </BrowserRouter>
-    </ClickMeetProvider>
+      </ClickMeetProvider>
+    </BrowserRouter>
   );
 };
 

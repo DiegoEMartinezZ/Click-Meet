@@ -10,7 +10,7 @@ const Landing = () => {
       <div className="flex flex-col items-center text-center">
         <MainTitle />
         <button
-          className="bg-clickmeet-orange text-white py-2 px-6 rounded-full flex items-center transition-transform hover:scale-105"
+          className="bg-clickmeet-orange cursor-pointer text-white py-2 px-6 rounded-full flex items-center transition-transform hover:scale-105"
           onClick={() => navigate("/select-user")}
         >
           <TiPin className="mr-1" size={18} />

@@ -1,8 +1,12 @@
 import { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ClickMeetContext = createContext();
 
 export const ClickMeetProvider = ({ children }) => {
+  // Navigation
+  const navigate = useNavigate();
+
   // Form Data State
   const [formData, setFormData] = useState({
     firstName: "",
@@ -110,6 +114,24 @@ export const ClickMeetProvider = ({ children }) => {
     setIsClicked(false);
   };
 
+  // Go back handler
+
+  const goBack = () => {
+    navigate(-1);
+    setFilterBtn(false);
+    resetFilters();
+  };
+
+  //Go to Login view
+  const goToLogin = () => {
+    navigate("/login");
+  };
+
+  //Go to Home view
+  const goHome = () => {
+    navigate("/select-user");
+  };
+
   // Constants
   const months = [
     { value: "1", label: "January" },
@@ -144,6 +166,9 @@ export const ClickMeetProvider = ({ children }) => {
   return (
     <ClickMeetContext.Provider
       value={{
+        goHome,
+        goBack,
+        goToLogin,
         deleteFilterSelection,
         editBtn,
         handleEditBtn,
