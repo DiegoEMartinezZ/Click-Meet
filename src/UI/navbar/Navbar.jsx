@@ -13,7 +13,7 @@ const Navbar = () => {
       <nav className="bg-clickmeet-black w-screen py-3 text-clickmeet-white md:py-5">
         <section className="flex justify-between px-8">
           <CiHome onClick={goHome} className="cursor-pointer" />
-          <BiSolidBellRing />
+          <BiSolidBellRing className="cursor-pointer" />
         </section>
       </nav>
     </>

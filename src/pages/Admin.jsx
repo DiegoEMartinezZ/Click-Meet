@@ -9,7 +9,7 @@ const Admin = () => {
       <Navbar />
       <RolSession rol={"Admin"} />
       <Title />
-      <MenuAdmin title={"Overview and Analytics"} />
+      <MenuAdmin title={"Meetings and Overview"} />
     </>
   );
 };
